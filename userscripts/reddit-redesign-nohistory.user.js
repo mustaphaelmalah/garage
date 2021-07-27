@@ -7,6 +7,9 @@
 // @match        https://www.reddit.com/*
 // @include      https://www.reddit.com/*
 // @grant        none
-// @downloadURL  https://gist.github.com/mustaphaelmalah/58c9b7035af944f2ba5e/raw/reddit-redesign-nohistory.user.js
-// @updateURL    https://gist.github.com/mustaphaelmalah/58c9b7035af944f2ba5e/raw/reddit-redesign-nohistory.meta.js
+// @downloadURL  https://github.com/mustaphaelmalah/garage/blob/master/userscripts/reddit-redesign-nohistory.user.js
+// @updateURL    https://github.com/mustaphaelmalah/garage/blob/master/userscripts/reddit-redesign-nohistory.user.js
 // ==/UserScript==
+
+history.pushState = function() {}
+history.replaceState = function() {}

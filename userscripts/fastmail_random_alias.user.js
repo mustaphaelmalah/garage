@@ -7,8 +7,8 @@
 // @match        https://www.fastmail.com/settings/*
 // @include      https://www.fastmail.com/settings/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/mustaphaelmalah/garage/master/fastmail_random_alias.user.js
-// @updateURL    https://raw.githubusercontent.com/mustaphaelmalah/garage/master/fastmail_random_alias.meta.js
+// @downloadURL  https://github.com/mustaphaelmalah/garage/blob/master/userscripts/fastmail_random_alias.user.js
+// @updateURL    https://github.com/mustaphaelmalah/garage/blob/master/userscripts/fastmail_random_alias.user.js
 // ==/UserScript==
 
 const WAIT_TIME_MS = 400;
