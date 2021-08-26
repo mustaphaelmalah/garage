@@ -1,14 +1,15 @@
 import fetch from 'node-fetch';
-import np from 'node-html-parser';
-const { parse } = np;
-
-import notifier from 'node-notifier';
+import node_parse from 'node-html-parser';
 import { setTimeout } from 'timers';
+import notifier from 'node-notifier';
+import open from 'open';
+
+const { parse } = node_parse;
 
 let _timeout_id = null;
 let _last_ad_id = null;
 
-const INTERVAL_MS = 60 * 1000;
+const INTERVAL_MS = 5 * 60 * 1000;
 
 const inspect_ads = async () => {
 	// Clear active timeout
@@ -37,11 +38,14 @@ const inspect_ads = async () => {
 		const ad_id = inf._attrs['data-id'];
 		if (ad_id > _last_ad_id) {
 			const price = parseFloat(inf._attrs['data-price']);
-			console.debug("New ad, id=", ad_id, "price=", price);
 			const is_candidate =  price < 8000;
 			is_candidate && notifier.notify({
 				title: "New apartment available",
-				text: `${url}`
+				text: `${url}`,
+				wait: true
+			}, () => {
+				// Open URL in default browser on ad click
+				open(url);
 			});
 			_last_ad_id = ad_id;
 		}
