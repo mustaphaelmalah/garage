@@ -21,6 +21,8 @@ const inspect_ads = async () => {
 	// Fetch ads and parse
 	console.log(new Date(), "Cycle started.", "Last ad ID=", _last_ad_id);
 
+	const is_initial_cycle = !!!_last_ad_id;
+
 	// TODO: take URL as an argument and add a pattern for candidate determination
 	const r = await fetch('https://www.olx.com.eg/en/properties/apartments-duplex-for-rent/shorouk-city/', {
 		method: "GET"
@@ -39,7 +41,9 @@ const inspect_ads = async () => {
 		if (ad_id > _last_ad_id) {
 			const price = parseFloat(inf._attrs['data-price']);
 			const is_candidate =  price < 8000;
-			is_candidate && notifier.notify({
+
+			// Notify on post-initial cycle
+			is_candidate && !is_initial_cycle && notifier.notify({
 				title: "New apartment available",
 				text: `${url}`,
 				wait: true
