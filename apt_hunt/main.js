@@ -42,7 +42,8 @@ const inspect_ads = async () => {
 			const price = parseFloat(inf._attrs['data-price']);
 			const is_candidate =  price < 8000;
 
-			// Notify on post-initial cycle
+			// Notify when a candidate is found.
+			// Ignore on initial cycle
 			is_candidate && !is_initial_cycle && notifier.notify({
 				title: "New apartment available",
 				text: `${url}`,
